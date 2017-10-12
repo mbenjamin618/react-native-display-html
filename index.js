@@ -113,6 +113,10 @@ export default class DisplayHTML extends Component {
         });
     }
 
+    getWebVRef = () => {
+      return this.webview
+    }
+
     /**
      * Callback when the bridge sends a message back to react-native.
      * It updates the webview's height if the payload contains the
@@ -141,6 +145,7 @@ export default class DisplayHTML extends Component {
         return (
               <WebViewBridge
                 {...this.props}
+                ref={(webview) => {this.webview = webview} }
                 injectedJavaScript={this._injectedScripts}
                 style={style}
                 source={this.source}
