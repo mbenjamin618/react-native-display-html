@@ -96,6 +96,10 @@ export default class DisplayHTML extends Component {
         }
     }
 
+    getWebVRef = () => {
+      return this.webview
+    }
+
     /**
      * Little helper converting functions to plain strings to inject
      * in the webview.
@@ -146,6 +150,7 @@ export default class DisplayHTML extends Component {
             <View style={containerStyle}>
                 <WebViewBridge
                   {...this.props}
+                  ref={(webview) => {this.webview = webview} }
                   injectedJavaScript={this._injectedScripts}
                   style={[style, { height: this.state.height }]}
                   source={this.source}
