@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, WebView, Platform, ViewPropTypes } from 'react-native';
+import { WebView, Platform, ViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
 import WebViewBridge from 'react-native-webview-bridge';
 
@@ -12,7 +12,6 @@ export default class DisplayHTML extends Component {
             additionalScripts: PropTypes.array,
             title: PropTypes.string,
             style: ViewPropTypes ? ViewPropTypes.style : WebView.propTypes.style,
-            containerStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
             HTMLStyles: PropTypes.string,
             defaultHeight: PropTypes.number,
             additionalHeight: PropTypes.number,
@@ -147,7 +146,6 @@ export default class DisplayHTML extends Component {
         const { style, containerStyle } = this.props;
 
         return (
-            <View style={containerStyle}>
                 <WebViewBridge
                   {...this.props}
                   ref={(webview) => {this.webview = webview} }
@@ -156,7 +154,6 @@ export default class DisplayHTML extends Component {
                   source={this.source}
                   onBridgeMessage={this.onMessage}
                 />
-            </View>
         );
     }
 }
